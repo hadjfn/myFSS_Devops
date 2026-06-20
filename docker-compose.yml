@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: devops-postgres
+    environment:
+      POSTGRES_DB: apprentis
+      POSTGRES_USER: apprentis
+      POSTGRES_PASSWORD: apprentis
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U apprentis -d apprentis"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  stats-service:
+    build:
+      context: ./stats-service
+    container_name: devops-stats-service
+    environment:
+      SERVER_PORT: 8081
+    ports:
+      - "8081:8081"
+
+  apprenti-service:
+    build:
+      context: ./apprenti-service
+    container_name: devops-apprenti-service
+    depends_on:
+      postgres:
+        condition: service_healthy
+      stats-service:
+        condition: service_started
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/apprentis
+      DB_USER: apprentis
+      DB_PASSWORD: apprentis
+      STATS_SERVICE_URL: http://stats-service:8081
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:

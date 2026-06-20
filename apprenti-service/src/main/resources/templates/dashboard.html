@@ -34,6 +34,26 @@
 </div>
 
 <div class="dashboard-container">
+
+    <section class="stats-panel" th:if="${stats != null}">
+        <h2>Statistiques (via stats-service)</h2>
+        <ul>
+            <li>Total : <strong th:text="${stats.total}">0</strong></li>
+            <li>Actifs : <strong th:text="${stats.active}">0</strong></li>
+            <li>Archivés : <strong th:text="${stats.archived}">0</strong></li>
+            <li>Année moyenne : <strong th:text="${#numbers.formatDecimal(stats.averageYear, 1, 2)}">0</strong></li>
+        </ul>
+        <div th:if="${!stats.countByProgramme.isEmpty()}">
+            <h3>Par programme</h3>
+            <ul>
+                <li th:each="e : ${stats.countByProgramme}">
+                    <span th:text="${e.key}">prog</span> :
+                    <strong th:text="${e.value}">0</strong>
+                </li>
+            </ul>
+        </div>
+    </section>
+
     <h2>Liste des apprentis</h2>
 
     <div class="error" th:if="${#lists.isEmpty(apprentis)}">

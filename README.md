@@ -148,4 +148,8 @@ docker compose up --build
 
 ## Google Labs
 
-*(à compléter avec les captures)*
+Lucas Faria : 
+<img width="947" height="442" alt="image" src="https://github.com/user-attachments/assets/658d8560-8a11-46f6-83be-6ad4dc83a234" />
+
+El hadj Sylla :
+

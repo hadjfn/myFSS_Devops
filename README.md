@@ -17,8 +17,7 @@ On a ajouté un deuxième service (`stats-service`) qui calcule des stats
 à partir d'un JSON envoyé par l'app principale. C'est juste un petit
 microservice REST stateless.
 
-## Archi
-
+## Archi<img width="753" height="120" alt="IMG_1071" src="https://github.com/user-attachments/assets/36ada989-a71f-4d2e-af42-564bfd92d1a6" />
 Architecture en couches respectée dans les 2 services :
 
 **apprenti-service** (port 8080)
@@ -152,4 +151,6 @@ Lucas Faria :
 <img width="947" height="442" alt="image" src="https://github.com/user-attachments/assets/658d8560-8a11-46f6-83be-6ad4dc83a234" />
 
 El hadj Sylla :
+
+<img width="753" height="120" alt="IMG_1071" src="https://github.com/user-attachments/assets/c540c362-4650-4208-ba43-1e96f48ab5ae" />
 
